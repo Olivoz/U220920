@@ -1,3 +1,5 @@
+const customers = [];
+
 function appendElement(target, elementName) {
   let element = document.createElement(elementName);
   return target.appendChild(element);
@@ -24,5 +26,6 @@ function build() {
     let adress = adressInput.value;
     if (!name || !number || !adress) return;
     appendCustomer(customerTable, name, number, adress);
+    customers.push({ name: name, number: number, adress: adress });
   };
 }
