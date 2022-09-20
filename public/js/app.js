@@ -37,7 +37,7 @@ function build() {
       adress: adress,
     };
 
-    customer.htmlElement = appendCustomer(customerTable, customer);
+    appendCustomer(customerTable, customer);
     customers.push(customer);
   };
 

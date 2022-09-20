@@ -10,4 +10,3 @@ The customer object contains the following:
 - name - The customers name
 - number - The customers phone number
 - adress - The customers adress
-- htmlElement - A reference to the customers table row (tr) element
