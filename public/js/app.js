@@ -39,4 +39,8 @@ function build() {
     customer.htmlElement = appendCustomer(customerTable, customer);
     customers.push(customer);
   };
+
+  findCustomerButton.onclick = () => {
+    window.location = "#" + search.value;
+  };
 }
