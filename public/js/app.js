@@ -1,5 +1,6 @@
 const customers = [];
 let id = 0;
+let highlighted;
 
 function appendElement(target, elementName) {
   let element = document.createElement(elementName);
@@ -41,6 +42,11 @@ function build() {
   };
 
   findCustomerButton.onclick = () => {
-    window.location = "#" + search.value;
+    let id = search.value;
+    if (!id) return;
+    window.location = `#${id}`;
+    if (highlighted) highlighted.style = undefined;
+    highlighted = document.getElementById(id);
+    if (highlighted) highlighted.style.backgroundColor = "red";
   };
 }
