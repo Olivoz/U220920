@@ -1,4 +1,5 @@
 const customers = [];
+let id = 0;
 
 function appendElement(target, elementName) {
   let element = document.createElement(elementName);
@@ -11,12 +12,15 @@ function appendCustomerInfo(target, value) {
   target.appendChild(tag);
 }
 
-function appendCustomer(target, name, number, adress) {
+function appendCustomer(target, customer) {
   let customerTag = document.createElement("tr");
-  appendCustomerInfo(customerTag, name);
-  appendCustomerInfo(customerTag, number);
-  appendCustomerInfo(customerTag, adress);
+  customerTag.id = customer.id;
+  appendCustomerInfo(customerTag, customer.id);
+  appendCustomerInfo(customerTag, customer.name);
+  appendCustomerInfo(customerTag, customer.number);
+  appendCustomerInfo(customerTag, customer.adress);
   target.appendChild(customerTag);
+  return customerTag;
 }
 
 function build() {
@@ -25,7 +29,14 @@ function build() {
     let number = telInput.value;
     let adress = adressInput.value;
     if (!name || !number || !adress) return;
-    appendCustomer(customerTable, name, number, adress);
-    customers.push({ name: name, number: number, adress: adress });
+    const customer = {
+      id: id++,
+      name: name,
+      number: number,
+      adress: adress,
+    };
+
+    customer.htmlElement = appendCustomer(customerTable, customer);
+    customers.push(customer);
   };
 }
