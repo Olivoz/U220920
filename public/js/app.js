@@ -44,9 +44,11 @@ function build() {
   findCustomerButton.onclick = () => {
     let id = search.value;
     if (!id) return;
+    let foundCustomerElement = document.getElementById(id);
+    if (!foundCustomerElement) return;
     window.location = `#${id}`;
     if (highlighted) highlighted.style = undefined;
-    highlighted = document.getElementById(id);
-    if (highlighted) highlighted.style.backgroundColor = "red";
+    highlighted = foundCustomerElement;
+    highlighted.style.backgroundColor = "red";
   };
 }
