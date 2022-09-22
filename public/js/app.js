@@ -23,7 +23,6 @@ function appendEmailInfo(target, email) {
 
 function appendCustomer(target, customer) {
   let customerTag = document.createElement("tr");
-  customerTag.id = customer.id;
   appendCustomerInfo(customerTag, customer.id);
   appendCustomerInfo(customerTag, customer.name);
   appendCustomerInfo(customerTag, customer.number);
@@ -58,13 +57,16 @@ function build() {
 
   findCustomerButton.onclick = () => {
     let id = search.value;
-    if (!id) return;
-    let foundCustomerElement = document.getElementById(id);
-    if (!foundCustomerElement) return;
-    window.location = `#${id}`;
-    if (highlighted) highlighted.style = undefined;
-    highlighted = foundCustomerElement;
-    highlighted.style.backgroundColor = "red";
+    if (!id && customers.find((customer) => customer.id == id)) return;
+    let foundCustomer = customers.find((customer) => customer.id == id);
+    if (!foundCustomer) return;
+
+    found.style.display = "block";
+    for (element of foundTable.children) {
+      if (element.tagName == "TR") element.remove();
+    }
+
+    appendCustomer(foundTable, foundCustomer);
   };
 
   showCustomersButton.onclick = () => {
