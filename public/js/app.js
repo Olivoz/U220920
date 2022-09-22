@@ -66,4 +66,10 @@ function build() {
     highlighted = foundCustomerElement;
     highlighted.style.backgroundColor = "red";
   };
+
+  showCustomersButton.onclick = () => {
+    if (customerTable.style.display == "none")
+      customerTable.style.display = "block";
+    else customerTable.style.display = "none";
+  };
 }
