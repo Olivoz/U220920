@@ -42,6 +42,10 @@ function build() {
 
     appendCustomer(customerTable, customer);
     customers.push(customer);
+    for (element of app.children) {
+      if (element.tagName == "INPUT" && element.id != "search")
+        element.value = "";
+    }
   };
 
   findCustomerButton.onclick = () => {
