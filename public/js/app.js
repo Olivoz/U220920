@@ -20,6 +20,7 @@ function appendCustomer(target, customer) {
   appendCustomerInfo(customerTag, customer.name);
   appendCustomerInfo(customerTag, customer.number);
   appendCustomerInfo(customerTag, customer.adress);
+  appendCustomerInfo(customerTag, customer.email);
   target.appendChild(customerTag);
   return customerTag;
 }
@@ -29,12 +30,14 @@ function build() {
     let name = nameInput.value;
     let number = telInput.value;
     let adress = adressInput.value;
-    if (!name || !number || !adress) return;
+    let email = emailInput.value;
+    if (!name || !number || !adress || !email) return;
     const customer = {
       id: id++,
       name: name,
       number: number,
       adress: adress,
+      email: email,
     };
 
     appendCustomer(customerTable, customer);
