@@ -13,6 +13,14 @@ function appendCustomerInfo(target, value) {
   target.appendChild(tag);
 }
 
+function appendEmailInfo(target, email) {
+  let tag = document.createElement("td");
+  let emailTag = appendElement(tag, "a");
+  emailTag.innerText = email;
+  emailTag.href = `mailto:${email}`;
+  target.appendChild(tag);
+}
+
 function appendCustomer(target, customer) {
   let customerTag = document.createElement("tr");
   customerTag.id = customer.id;
@@ -20,7 +28,7 @@ function appendCustomer(target, customer) {
   appendCustomerInfo(customerTag, customer.name);
   appendCustomerInfo(customerTag, customer.number);
   appendCustomerInfo(customerTag, customer.adress);
-  appendCustomerInfo(customerTag, customer.email);
+  appendEmailInfo(customerTag, customer.email);
   target.appendChild(customerTag);
   return customerTag;
 }
